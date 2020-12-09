@@ -72,6 +72,8 @@
 
 	<node name="robot_to_green_ball" pkg="exp_assignment2" type="robot_to_ball.py" output="screen" /> 
 
+	<node name= "state_machine" pkg= "exp_assignment2" type= "state_machine.py" output="screen" /> 
+
    	<node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="--namespace=/robot
         joint_state_controller
         joint_position_controller
