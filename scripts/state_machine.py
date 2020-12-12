@@ -45,7 +45,7 @@ VERBOSE = False
 
 vel = Twist() 
 angle_camera = Float64() 
-vel_stop = Twist() 
+global state 
 
 
 #random choice 
@@ -114,13 +114,18 @@ class image_feature:
      # topic where we publish
         self.image_pub = rospy.Publisher("/output/image_raw/compressed",
                                          CompressedImage, queue_size=1)
+
         self.vel_pub = rospy.Publisher("/robot/cmd_vel",
                                        Twist, queue_size=1)
+ 
+        self.angle_pub = rospy.Publisher("/robot/joint_position_controller/command",
+                                    Float64, queue_size=1)   
 
         # subscribed Topic
         self.subscriber = rospy.Subscriber("/robot/camera1/image_raw/compressed",
                                            CompressedImage, self.callback,  queue_size=1)
 
+        
 
     def callback(self, ros_data):
         '''Callback function of subscribed topic. 
@@ -147,12 +152,13 @@ class image_feature:
         center = None
         # only proceed if at least one contour was found
         if len(cnts) > 0:
+            
             # find the largest contour in the mask, then use
             # it to compute the minimum enclosing circle and
             # centroid
 
             
-            
+            rospy.set_param('/robot/state',1)
             
 
             c = max(cnts, key=cv2.contourArea)
@@ -162,7 +168,7 @@ class image_feature:
 
             # only proceed if the radius meets a minimum size
             if radius > 10:
-                rospy.set_param('state',1)
+                
                 # draw the circle and centroid on the frame,
                 # then update the list of tracked points
                 cv2.circle(image_np, (int(x), int(y)), int(radius),
@@ -171,30 +177,67 @@ class image_feature:
                 vel = Twist()
                 vel.angular.z = 0.002*(center[0]-400)
                 vel.linear.x = -0.01*(radius-100) 
-                self.vel_pub.publish(vel)
-
                 
-            
+                self.vel_pub.publish(vel)
+                angle_camera.data = 0.0 
+
+                while vel.linear.x < 0.01: 
+                    vel.angular.z = 0.0
+                    vel.linear.x = 0.0
+                    self.vel_pub.publish(vel) 
+
+                    
+                    # rotate head 
+                    while angle_camera.data < 1.56: #head turns left
+                        angle_camera.data = angle_camera.data + 0.1 
+                        self.angle_pub.publish(angle_camera) 
+                        time.sleep(1)
+                    time.sleep(5) 
+                    
+                    while angle_camera.data > 0: #head turns right
+                        angle_camera.data = angle_camera.data - 0.1 
+                        self.angle_pub.publish(angle_camera) 
+                        time.sleep(1)
+                    time.sleep(5)  
+                    while angle_camera.data > -1.56: #head turns right
+                        angle_camera.data = angle_camera.data - 0.1 
+                        self.angle_pub.publish(angle_camera) 
+                        time.sleep(1) 
+                    time.sleep(5) 
+                    while angle_camera.data < 0: #head turns left 
+                        angle_camera.data = angle_camera.data + 0.1 
+                        self.angle_pub.publish(angle_camera) 
+                        time.sleep(1)
+                    time.sleep(5)  
+                    rospy.set_param('/robot/state',2) 
+
+
+
+
+                    
+                    
+                rospy.set_param('/robot/state',2) 
 
 
         else:
 
-            ## set parameter service state = 1 
-            rospy.set_param('state',2)
-            vel = Twist()
-            vel.angular.z = 0.5
-            self.vel_pub.publish(vel)
 
+            vel = Twist()
+            vel.angular.z = 0.5 
+            self.vel_pub.publish(vel) 
+            
+            
+            
+            
+            
+            
 
         # update the points queue
         # pts.appendleft(center)
         cv2.imshow('window', image_np)
-        cv2.waitKey(2)                                 
+        cv2.waitKey(2)                
 
-
-def vel_clbk(dog_vel): 
-    vel.linear.x = dog_vel.linear.x
- 
+                     
 
 
 ## Normal state definition    
@@ -205,6 +248,8 @@ class Normal(smach.State):
         ## 2 outcomes defined 
         smach.State.__init__(self, outcomes=['outcome1','outcome2'])
         self.command = String() 
+
+
         
         
     ## execution 
@@ -215,27 +260,19 @@ class Normal(smach.State):
         ## Main Loop 
         while True: 
             #move randomly 
-            move_dog_randomly()
-            time.sleep(2) 
-            
+            #move_dog_randomly()
+            time.sleep(5) 
+            rospy.set_param('/robot/state',1) 
 
 
-            self.command = user_action() 
-            rospy.loginfo('command received is %s', self.command) 
+            #self.command = user_action() 
+            #rospy.loginfo('command received is %s', self.command) 
 
-            if self.command == "sleep" :
-                return 'outcome1'
+            #if self.command == "sleep" :
+            #    return 'outcome1'
 
-            if self.command == "play" : 
-                #look for a ball 
-                ic = image_feature() 
-            
-                #get state 
-                state_ = rospy.get_param('state') 
-                if state_ == 1: #detected ball 
-                    return 'outcome2'
-                if state_ == 2: #no detected ball 
-                        time.sleep(2) 
+            #if self.command == "play" : 
+            return 'outcome2'
 
 
                     
@@ -275,29 +312,26 @@ class Play(smach.State):
     ## Execution
     def execute(self, userdata): 
         
-        time.sleep(15) 
-        rospy.Subscriber("/robot/cmd_vel", Twist, vel_clbk) 
-        angle_pub = rospy.Publisher("/robot/joint_position_controller/command",
-                                    Float64, queue_size=1)    
+        ic = image_feature() 
 
-        stop_pub = rospy.Publisher("/robot/cmd_vel", Twist, queue_size = 1)
-        
-        while vel.linear.x > 0.01: 
+        state = rospy.get_param('/robot/state') 
+
+        while state == 1: 
             time.sleep(1) 
-        if vel.linear.x < 0.01: 
+            state = rospy.get_param('/robot/state')
+
+            if state == 2: #finito di girare la testa : runna di nuovo l'istanza 
+                ic = image_feature() 
         
-            vel_stop.angular.z = 0
-            vel_stop.linear.x = 0
-            stop_pub.publish(vel_stop)
+            if state == 3: #go to normal 
+                return 'outcome2'
 
-            angle_camera.data = 0.0
-            while angle_camera.data < 6.27: 
-                angle_camera.data = angle_camera.data + 0.1 
-                angle_pub.publish(angle_camera)
-                time.sleep(2) 
 
+        
+            
         #return to a Normal state 
-        return 'outcome2'
+
+        
 
 ## Main Function definition 
 def main():
