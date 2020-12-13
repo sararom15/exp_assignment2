@@ -45,13 +45,14 @@ VERBOSE = False
 
 vel = Twist() 
 angle_camera = Float64() 
-global state 
+
+global count
+global camera_rotate
 
 
 #random choice 
 def user_action(): 
     return random.choice(['play', 'sleep'])
-
 
 
 
@@ -79,9 +80,6 @@ def move_dog_randomly():
     return client.get_result() 
 
 
-
-
-
 #client of actionlib serve for the dog robot which goes to sleep 
 def move_dog_home(): 
     #Creates the SimpleActionClient, passing the type of the action (PlanningAction) to the constructor
@@ -105,7 +103,7 @@ def move_dog_home():
 
     return client.get_result() 
 
-#detection ball
+
 class image_feature:
 
     def __init__(self):
@@ -118,18 +116,18 @@ class image_feature:
         self.vel_pub = rospy.Publisher("/robot/cmd_vel",
                                        Twist, queue_size=1)
  
-        self.angle_pub = rospy.Publisher("/robot/joint_position_controller/command",
-                                    Float64, queue_size=1)   
 
         # subscribed Topic
         self.subscriber = rospy.Subscriber("/robot/camera1/image_raw/compressed",
                                            CompressedImage, self.callback,  queue_size=1)
 
-        
+    def callback(self, ros_data): 
+        global count 
+        global camera_rotate
+        count = rospy.get_param('count') 
+        #while count == 700: 
+        #    time.sleep(1)
 
-    def callback(self, ros_data):
-        '''Callback function of subscribed topic. 
-        Here images get converted and features detected'''
         if VERBOSE:
             print ('received image of type: "%s"' % ros_data.format)
 
@@ -157,8 +155,7 @@ class image_feature:
             # it to compute the minimum enclosing circle and
             # centroid
 
-            
-            rospy.set_param('/robot/state',1)
+
             
 
             c = max(cnts, key=cv2.contourArea)
@@ -179,68 +176,37 @@ class image_feature:
                 vel.linear.x = -0.01*(radius-100) 
                 
                 self.vel_pub.publish(vel)
-                angle_camera.data = 0.0 
 
-                while vel.linear.x < 0.01: 
-                    vel.angular.z = 0.0
-                    vel.linear.x = 0.0
-                    self.vel_pub.publish(vel) 
-
+                if vel.linear.x < 0.01: 
+                    vel.angular.z = 0
+                    vel.linear.x = 0
+                
+                    self.vel_pub.publish(vel)
+                    rospy.set_param('camera_rotate', 1)
                     
-                    # rotate head 
-                    while angle_camera.data < 1.56: #head turns left
-                        angle_camera.data = angle_camera.data + 0.1 
-                        self.angle_pub.publish(angle_camera) 
-                        time.sleep(1)
-                    time.sleep(5) 
-                    
-                    while angle_camera.data > 0: #head turns right
-                        angle_camera.data = angle_camera.data - 0.1 
-                        self.angle_pub.publish(angle_camera) 
-                        time.sleep(1)
-                    time.sleep(5)  
-                    while angle_camera.data > -1.56: #head turns right
-                        angle_camera.data = angle_camera.data - 0.1 
-                        self.angle_pub.publish(angle_camera) 
-                        time.sleep(1) 
-                    time.sleep(5) 
-                    while angle_camera.data < 0: #head turns left 
-                        angle_camera.data = angle_camera.data + 0.1 
-                        self.angle_pub.publish(angle_camera) 
-                        time.sleep(1)
-                    time.sleep(5)  
-                    rospy.set_param('/robot/state',2) 
-
-
-
-
-                    
-                    
-                rospy.set_param('/robot/state',2) 
 
 
         else:
-
-
             vel = Twist()
             vel.angular.z = 0.5 
             self.vel_pub.publish(vel) 
-            
-            
-            
-            
-            
-            
+            count = count + 1 
+            rospy.set_param('count', count) 
+
+
+
+
 
         # update the points queue
         # pts.appendleft(center)
         cv2.imshow('window', image_np)
         cv2.waitKey(2)                
 
-                     
 
 
-## Normal state definition    
+
+
+        ## Normal state definition    
 class Normal(smach.State):
 
     ## inizialization
@@ -260,10 +226,11 @@ class Normal(smach.State):
         ## Main Loop 
         while True: 
             #move randomly 
-            #move_dog_randomly()
+            rospy.set_param('count',0) 
+            move_dog_randomly()
+            
             time.sleep(5) 
-            rospy.set_param('/robot/state',1) 
-
+            
 
             #self.command = user_action() 
             #rospy.loginfo('command received is %s', self.command) 
@@ -273,13 +240,6 @@ class Normal(smach.State):
 
             #if self.command == "play" : 
             return 'outcome2'
-
-
-                    
-
-            
-
-
 
 
 ## Sleep State definition 
@@ -300,36 +260,92 @@ class Sleep(smach.State):
         return 'outcome1'
 
 
-
 ## Play state definition 
 class Play(smach.State): 
     ## initialization 
     def __init__(self): 
         ## 1 outcome defined : Normal 
         smach.State.__init__(self, outcomes=['outcome2'])
+        self.angle_pub = rospy.Publisher("/robot/joint_position_controller/command",
+                                    Float64, queue_size=1) 
 
 
+        
     ## Execution
     def execute(self, userdata): 
-        
+
+
+
         ic = image_feature() 
 
-        state = rospy.get_param('/robot/state') 
-
-        while state == 1: 
-            time.sleep(1) 
-            state = rospy.get_param('/robot/state')
-
-            if state == 2: #finito di girare la testa : runna di nuovo l'istanza 
-                ic = image_feature() 
         
-            if state == 3: #go to normal 
-                return 'outcome2'
+
+        while rospy.get_param('count') < 700: 
+
+            time.sleep(1)
+            replay = rospy.get_param('camera_rotate')
+            if replay == 1: 
+                angle_camera = Float64() 
+                angle_camera.data = 0.0 
+                    
+                        # rotate head
+                while angle_camera.data < 1.20: #head turns left
+                    #if rospy.get_param('camera_rotate') == 1: 
+                    angle_camera.data = angle_camera.data + 0.1 
+                    self.angle_pub.publish(angle_camera) 
+                    time.sleep(1)
+                time.sleep(3) 
+                
+                while angle_camera.data > 0.01: #head turns right 
+                    #if rospy.get_param('camera_rotate') == 1: 
+                    angle_camera.data = angle_camera.data - 0.1 
+                    self.angle_pub.publish(angle_camera) 
+                    time.sleep(1)
+
+                while angle_camera.data > -1.20: 
+                    #if rospy.get_param('camera_rotate') == 1: 
+                    angle_camera.data = angle_camera.data - 0.1 
+                    self.angle_pub.publish(angle_camera)
+                    time.sleep(1) 
+                time.sleep(3) 
+
+                while angle_camera.data < -0.01: 
+                    angle_camera.data = angle_camera.data + 0.1 
+                    self.angle_pub.publish(angle_camera) 
+                    time.sleep(1)
+
+
+
+                rospy.set_param('camera_rotate', 0)
+                time.sleep(100)
+
+                
+
+                        
+                
+
+                
+
+
+        #while rospy.get_param('camera_rotate') == 0: 
+        #    ic2 = image_feature() 
+        #    rospy.set_param('camera_rotate',1)
+ 
+
+        return 'outcome2'
 
 
         
-            
-        #return to a Normal state 
+
+
+
+
+
+
+
+
+
+
 
         
 
@@ -338,7 +354,8 @@ def main():
     ## init the ros node 
     rospy.init_node('state_machine')
   
-
+    rospy.set_param('count',0) 
+    rospy.set_param('camera_rotate',0)
 
     ## Create a SMACH state machine
     sm = smach.StateMachine(outcomes=['outcome4'])
