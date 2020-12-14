@@ -300,7 +300,7 @@ class Normal(smach.State):
         
         while True: 
             
-            time.sleep(10) 
+            time.sleep(5) 
             ## read command (choice random between move random or go to sleep)
             self.command = user_action() 
             rospy.loginfo('command received is %s', self.command) 
@@ -383,6 +383,7 @@ class Play(smach.State):
             replay = rospy.get_param('camera_rotate')
 
             if replay == 1: 
+                rospy.set_param('count', 0)
                 rospy.loginfo('rotating head')
                 angle_camera = Float64() 
                 angle_camera.data = 0.0 

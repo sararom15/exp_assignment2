@@ -1,5 +1,9 @@
 #! /usr/bin/env python
 
+## @file go_to_point_robot.py 
+# @brief This node is actionlib server that permits to move the robot 
+#
+
 import rospy
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist, Point, Pose
@@ -11,16 +15,16 @@ import actionlib
 import actionlib.msg
 import exp_assignment2.msg
 
-# robot state variables
+## robot state variables
 position_ = Point()
 pose_ = Pose()
 yaw_ = 0
-# machine state
+## machine state
 state_ = 0
-# goal
+## goal
 desired_position_ = Point()
 desired_position_.z = 0
-# parameters
+## parameters
 yaw_precision_ = math.pi / 9  # +/- 20 degree allowed
 yaw_precision_2_ = math.pi / 90  # +/- 2 degree allowed
 dist_precision_ = 0.1
@@ -31,25 +35,25 @@ lb_a = -0.5
 ub_d = 0.6
 z_back = 0.25
 
-# publisher
+## publisher
 pub = None
 pubz = None
 
-# action_server
+## action_server
 act_s = None
 
 
-# Read odometry
+## Callback function
 def clbk_odom(msg):
     global position_
     global pose_
     global yaw_
 
-    # position
+    ## position
     position_ = msg.pose.pose.position
     pose_ = msg.pose.pose
 
-    # yaw
+    ## yaw
     quaternion = (
         msg.pose.pose.orientation.x,
         msg.pose.pose.orientation.y,
@@ -64,7 +68,7 @@ def change_state(state):
     state_ = state
     print('State changed to [%s]' % state_)
 
-
+## function to compute the norm 
 def normalize_angle(angle):
     if(math.fabs(angle) > math.pi):
         angle = angle - (2 * math.pi * angle) / (math.fabs(angle))
@@ -86,12 +90,12 @@ def fix_yaw(des_pos):
 
     pub.publish(twist_msg)
 
-    # state change conditions
+    ## state change conditions
     if math.fabs(err_yaw) <= yaw_precision_2_:
         print('Yaw error: [%s]' % err_yaw)
         change_state(1)
 
-
+## function to go straight
 def go_straight_ahead(des_pos):
     global yaw_, pub, yaw_precision_, state_
     desired_yaw = math.atan2(des_pos.y - position_.y, des_pos.x - position_.x)
@@ -117,14 +121,14 @@ def go_straight_ahead(des_pos):
         print('Yaw error: [%s]' % err_yaw)
         change_state(0)
 
-
+## function to stop the robot when the goal is achieved 
 def done():
     twist_msg = Twist()
     twist_msg.linear.x = 0
     twist_msg.angular.z = 0
     pub.publish(twist_msg)
 
-
+## define planning funcion
 def planning(goal):
 
     global state_, desired_position_
@@ -170,7 +174,7 @@ def planning(goal):
         rospy.loginfo('Goal: Succeeded!')
         act_s.set_succeeded(result)
 
-
+## Main function 
 def main():
     global pub, active_, act_s
     rospy.init_node('robot_go_to_point')
