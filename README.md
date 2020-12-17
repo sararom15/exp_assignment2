@@ -39,7 +39,9 @@ In order to perform this, Smach library is imported.
 
 In the Normal state, the robot can perform two possible actions (choosen randomly by "user_action" function): can switch in sleep state or can search for the ball, subscribing to the "camera1/image_raw/compressed" topic. Using OpenCV to show the image from the camera, the following window will be opened 
 
---> inserire screenshot della window #############################
+<p align="center"> 
+<img src="https://github.com/sararom15/exp_assignment2/blob/main/images/window_ball.png">
+</p>
 
 If the ball is found, then it switches in Play state, otherwise it moves randomly: "move_dog" function is defined to send the goal position to the server of the robot (using "/robot_reaching_goal/goal" topic). 
 
@@ -67,11 +69,21 @@ There exists some folders in the package:
 
  - World folder: contains the ROS world file, ti create the environment in Gazebo (gridden arena). 
 
---> here picture of the arena
+<p align="center"> 
+<img src="https://github.com/sararom15/exp_assignment2/blob/main/images/Environment.png">
+</p>
+
 
  - Urdf folder: cointains the xacro, urdf and gazebo files of the robot, the ball and the human. Here the URDF models are defined. 
 
---> here graph and image of Giacomino URDF
+<p align="center"> 
+<img src="https://github.com/sararom15/exp_assignment2/blob/main/images/URDFRobot_graph.png">
+</p>
+
+<p align="center"> 
+<img src="https://github.com/sararom15/exp_assignment2/blob/main/images/Dog_robot.png">
+</p>
+
 
  - Launch folder: cointains the launch file. 
  - Scripts folder: cointains the Python files (already discussed in the previous paragraph) 
@@ -84,7 +96,7 @@ According to the ROS package, the CMakeLists.txt and package.xml are present too
  
 The first thing to do, after having cloned the repository in the Ros workspace, is to install the package, using the following commands in the shell:
 
-    
+   
     ```
     cd "yourWorkspace"_ws/src/exp_assignment2
     chmod +x install.sh 
@@ -101,12 +113,18 @@ Then, run the system:
     
     ```
 
-
-
 # System's features 
+This system is improving the previous assignment. 
+The environment is simulated with the Gazebo GUI. Moreover, what the robot is doing and what the behavior's state is executing are printed on the Terminal. 
 
-# System's limitations 
 
-# Possible technical improvements 
 
-# Author and contact visualizzare 
+# System's limitations and technical improvements 
+
+Sometimes, in Play state, the num of interactions ("count" parameter) finishes before to check the presence of the ball in the arena: this means that the robot cannot perform an entire turn on itself and he cannot see the ball, so enters in the Normal state. Nevertheless, in the normal state, before to move randomly, a checking of the ball presence is done: therefore in case the ball is included, the robot can switch again in Play state. 
+
+The view of the dog robot (the xacro file) can be improved, in order to make it look more like a dog. 
+
+# Author and contact
+Sara Romano - S4802844
+sara.romano.15@gmail.com
