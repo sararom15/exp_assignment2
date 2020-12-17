@@ -9,9 +9,9 @@ The nodes are written in Python and the environment used for the simulation is G
 The motions of both robots are implemented with two actionlib client-server, and the visualization of the camera is allowed by OpenCV: CV_bridge library is used to interface ROS and OpenCV by converting ROS images into OpenCV images, and vice-versa. 
 
 
-# Software achitecture anche states diagrams 
+# Software achitecture and states diagrams 
 
-The system is composed by four nodes written in python in the Scripts folder: 
+The system is composed by four nodes, written in Python, present in the Scripts folder: 
 
  - "go_to_point_ball.py" is the actionlib server to move the ball; 
  - "go_to_point_robot.py" is the actionlib server to move the robot; 
@@ -21,7 +21,7 @@ The system is composed by four nodes written in python in the Scripts folder:
 A launch file "gazebo_world.launch" is provided to start gazebo, to run simultaneously every nodes and to launch the spawner for the robots.
 
 ### Go_to_point_ball.py 
-The node implements the actionlib server to move the ball. The ball can move around in the arena, and can disappear, moving along z axis (it is possible to do this, becuase the ball has defined with no collision elements and zero gravity). 
+The node implements the actionlib server to move the ball. The ball can move around in the arena, and can disappear, moving along z axis (it is possible to do this, because the ball has been defined with no collision elements and zero gravity). 
 
 ### Go_to_point_robot.py 
 The node implements the actionlib server to move the robot. It is quite different from the previous node, because the robot is wheeled and it has the differential_drive plugin. 
@@ -34,6 +34,8 @@ For twice, the ball reaches a random goal position and waits for 50 secs, then i
 
 ### State_machine.py 
 It is the main node because it implements a state machine and allows the dog robot to perform the three possible behaviors (Sleep, Normal and Play). 
+
+In order to perform this, Smach library is imported. 
 
 In the Normal state, the robot can perform two possible actions (choosen randomly by "user_action" function): can switch in sleep state or can search for the ball, subscribing to the "camera1/image_raw/compressed" topic. Using OpenCV to show the image from the camera, the following window will be opened 
 
@@ -57,8 +59,8 @@ The ROS parameters are used in state_machine node; they are:
 
  - count: Used in Play state;  it goes from 0 to 360 and counts the num of time in which the robot does not see the ball (it is able to perform an entire turn on itself); when it gets equal to 360, then he passes in Normal state. 
  - camera_rotate:Used in Play state as well. It is a boolean parameter, always setted to 0, but when the robot reaches the ball it is set to 1, in order to start to rotate the head. 
- - count2: the same rule of the "count" parameter, but used in Normal state. 
- - DetectedBall: Used in Normal state. It is a boolean parameter: switches to 1 when the ball is detected, in order to pass in Play state. 
+ - count2: it has the same purpuse of the "count" parameter, but used in Normal state. 
+ - DetectedBall: Used in Normal state. It is a boolean parameter: switches to 1 when the ball is detected, in order to enter in Play state. 
 
 # Package and file list 
 There exists some folders in the package: 
@@ -81,6 +83,7 @@ According to the ROS package, the CMakeLists.txt and package.xml are present too
 # Installation
  
 The first thing to do, after having cloned the repository in the Ros workspace, is to install the package, using the following commands in the shell:
+
     
     ```
     cd "yourWorkspace"_ws/src/exp_assignment2
@@ -89,7 +92,9 @@ The first thing to do, after having cloned the repository in the Ros workspace, 
 
     ```
 
+
 Then, run the system: 
+
     
     ```
     roslaunch exp_assignment2 gazebo_world.launch
