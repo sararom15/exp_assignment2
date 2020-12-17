@@ -1,0 +1,140 @@
+\hypertarget{classrobot__to__ball_1_1image__feature}{}\section{robot\+\_\+to\+\_\+ball.\+image\+\_\+feature Class Reference}
+\label{classrobot__to__ball_1_1image__feature}\index{robot\+\_\+to\+\_\+ball.\+image\+\_\+feature@{robot\+\_\+to\+\_\+ball.\+image\+\_\+feature}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classrobot__to__ball_1_1image__feature_a11786e63291f4aba9857349a272e8be7}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classrobot__to__ball_1_1image__feature_a1193dd210c472ae7ec719b513a41daaf}{callback} (self, ros\+\_\+data)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrobot__to__ball_1_1image__feature_ac8ab0d47c79ed16879966180d1ed0d70}\label{classrobot__to__ball_1_1image__feature_ac8ab0d47c79ed16879966180d1ed0d70}} 
+{\bfseries image\+\_\+pub}
+\item 
+\mbox{\Hypertarget{classrobot__to__ball_1_1image__feature_a32543d2f34b5e4f114a6eb63f6d71b3a}\label{classrobot__to__ball_1_1image__feature_a32543d2f34b5e4f114a6eb63f6d71b3a}} 
+{\bfseries vel\+\_\+pub}
+\item 
+\mbox{\Hypertarget{classrobot__to__ball_1_1image__feature_aaa6b6d2e86042b5b52c2ffefe4533a6f}\label{classrobot__to__ball_1_1image__feature_aaa6b6d2e86042b5b52c2ffefe4533a6f}} 
+{\bfseries subscriber}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 27 of file robot\+\_\+to\+\_\+ball.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classrobot__to__ball_1_1image__feature_a11786e63291f4aba9857349a272e8be7}\label{classrobot__to__ball_1_1image__feature_a11786e63291f4aba9857349a272e8be7}} 
+\index{robot\+\_\+to\+\_\+ball\+::image\+\_\+feature@{robot\+\_\+to\+\_\+ball\+::image\+\_\+feature}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!robot\+\_\+to\+\_\+ball\+::image\+\_\+feature@{robot\+\_\+to\+\_\+ball\+::image\+\_\+feature}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def robot\+\_\+to\+\_\+ball.\+image\+\_\+feature.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize ros publisher, ros subscriber\end{DoxyVerb}
+ 
+
+Definition at line 29 of file robot\+\_\+to\+\_\+ball.\+py.
+
+
+\begin{DoxyCode}
+29     \textcolor{keyword}{def }\hyperlink{classstate__machine_1_1Play_a5993a23d8be7f7b2647f71ede0334957}{\_\_init\_\_}(self):
+30         \textcolor{stringliteral}{'''Initialize ros publisher, ros subscriber'''}
+31         rospy.init\_node(\textcolor{stringliteral}{'image\_feature'}, anonymous=\textcolor{keyword}{True})
+32      \textcolor{comment}{# topic where we publish}
+33         self.image\_pub = rospy.Publisher(\textcolor{stringliteral}{"/output/image\_raw/compressed"},
+34                                          CompressedImage, queue\_size=1)
+35         self.vel\_pub = rospy.Publisher(\textcolor{stringliteral}{"/robot/cmd\_vel"},
+36                                        Twist, queue\_size=1)
+37 
+38         \textcolor{comment}{# subscribed Topic}
+39         self.subscriber = rospy.Subscriber(\textcolor{stringliteral}{"/robot/camera1/image\_raw/compressed"},
+40                                            CompressedImage, self.callback,  queue\_size=1)
+41 
+42 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classrobot__to__ball_1_1image__feature_a1193dd210c472ae7ec719b513a41daaf}\label{classrobot__to__ball_1_1image__feature_a1193dd210c472ae7ec719b513a41daaf}} 
+\index{robot\+\_\+to\+\_\+ball\+::image\+\_\+feature@{robot\+\_\+to\+\_\+ball\+::image\+\_\+feature}!callback@{callback}}
+\index{callback@{callback}!robot\+\_\+to\+\_\+ball\+::image\+\_\+feature@{robot\+\_\+to\+\_\+ball\+::image\+\_\+feature}}
+\subsubsection{\texorpdfstring{callback()}{callback()}}
+{\footnotesize\ttfamily def robot\+\_\+to\+\_\+ball.\+image\+\_\+feature.\+callback (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{ros\+\_\+data }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Callback function of subscribed topic. 
+Here images get converted and features detected\end{DoxyVerb}
+ 
+
+Definition at line 43 of file robot\+\_\+to\+\_\+ball.\+py.
+
+
+\begin{DoxyCode}
+43     \textcolor{keyword}{def }callback(self, ros\_data):
+44         \textcolor{stringliteral}{'''Callback function of subscribed topic. }
+45 \textcolor{stringliteral}{        Here images get converted and features detected'''}
+46         \textcolor{keywordflow}{if} VERBOSE:
+47             \textcolor{keywordflow}{print} (\textcolor{stringliteral}{'received image of type: "%s"'} % ros\_data.format)
+48 
+49         
+50         np\_arr = np.fromstring(ros\_data.data, np.uint8)
+51         image\_np = cv2.imdecode(np\_arr, cv2.IMREAD\_COLOR)  \textcolor{comment}{# OpenCV >= 3.0:}
+52 
+53         greenLower = (50, 50, 20)
+54         greenUpper = (70, 255, 255)
+55 
+56         blurred = cv2.GaussianBlur(image\_np, (11, 11), 0)
+57         hsv = cv2.cvtColor(blurred, cv2.COLOR\_BGR2HSV)
+58         mask = cv2.inRange(hsv, greenLower, greenUpper)
+59         mask = cv2.erode(mask, \textcolor{keywordtype}{None}, iterations=2)
+60         mask = cv2.dilate(mask, \textcolor{keywordtype}{None}, iterations=2)
+61         \textcolor{comment}{#cv2.imshow('mask', mask)}
+62         cnts = cv2.findContours(mask.copy(), cv2.RETR\_EXTERNAL,
+63                                 cv2.CHAIN\_APPROX\_SIMPLE)
+64         cnts = imutils.grab\_contours(cnts)
+65         center = \textcolor{keywordtype}{None}
+66         \textcolor{comment}{# only proceed if at least one contour was found}
+67         \textcolor{keywordflow}{if} len(cnts) > 0:
+68             \textcolor{comment}{# find the largest contour in the mask, then use}
+69             \textcolor{comment}{# it to compute the minimum enclosing circle and}
+70             \textcolor{comment}{# centroid}
+71             c = max(cnts, key=cv2.contourArea)
+72             ((x, y), radius) = cv2.minEnclosingCircle(c)
+73             M = cv2.moments(c)
+74             center = (int(M[\textcolor{stringliteral}{"m10"}] / M[\textcolor{stringliteral}{"m00"}]), int(M[\textcolor{stringliteral}{"m01"}] / M[\textcolor{stringliteral}{"m00"}]))
+75 
+76             \textcolor{comment}{# only proceed if the radius meets a minimum size}
+77             \textcolor{keywordflow}{if} radius > 10:
+78                 \textcolor{comment}{# draw the circle and centroid on the frame,}
+79                 \textcolor{comment}{# then update the list of tracked points}
+80                 cv2.circle(image\_np, (int(x), int(y)), int(radius),
+81                            (0, 255, 255), 2)
+82                 cv2.circle(image\_np, center, 5, (0, 0, 255), -1)
+83                 vel = Twist()
+84                 vel.angular.z = 0.002*(center[0]-400)
+85                 vel.linear.x = -0.01*(radius-100) 
+86                 self.vel\_pub.publish(vel)
+87 
+88         \textcolor{keywordflow}{else}:
+89             vel = Twist()
+90             vel.angular.z = 0.5
+91             self.vel\_pub.publish(vel)
+92 
+93         \textcolor{comment}{# update the points queue}
+94         \textcolor{comment}{# pts.appendleft(center)}
+95         cv2.imshow(\textcolor{stringliteral}{'window'}, image\_np)
+96         cv2.waitKey(2)
+97 
+98         \textcolor{comment}{# self.subscriber.unregister()}
+99 
+100 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/robot\+\_\+to\+\_\+ball.\+py\end{DoxyCompactItemize}

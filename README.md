@@ -126,5 +126,7 @@ Sometimes, in Play state, the num of interactions ("count" parameter) finishes b
 The view of the dog robot (the xacro file) can be improved, in order to make it look more like a dog. 
 
 # Author and contact
+
 Sara Romano - S4802844
+
 sara.romano.15@gmail.com
