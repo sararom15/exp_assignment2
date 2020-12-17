@@ -1,0 +1,164 @@
+\hypertarget{state__machine_8py}{}\section{/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/state\+\_\+machine.py File Reference}
+\label{state__machine_8py}\index{/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/state\+\_\+machine.\+py@{/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/state\+\_\+machine.\+py}}
+
+
+This node implements a state machine which permits to move around and to search for a ball, go to sleep, and play with the ball when the last one is found.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classstate__machine_1_1image__feature}{state\+\_\+machine.\+image\+\_\+feature}
+\begin{DoxyCompactList}\small\item\em Istance called in play state to track the ball. \end{DoxyCompactList}\item 
+class \hyperlink{classstate__machine_1_1Normal}{state\+\_\+machine.\+Normal}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classstate__machine_1_1Normal}{Normal} state definition. \end{DoxyCompactList}\item 
+class \hyperlink{classstate__machine_1_1Sleep}{state\+\_\+machine.\+Sleep}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classstate__machine_1_1Sleep}{Sleep} State definition. \end{DoxyCompactList}\item 
+class \hyperlink{classstate__machine_1_1Play}{state\+\_\+machine.\+Play}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classstate__machine_1_1Play}{Play} state definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{state__machine_8py_afaa99f0eebff6571a958fcc827c6a367}\label{state__machine_8py_afaa99f0eebff6571a958fcc827c6a367}} 
+def \hyperlink{state__machine_8py_afaa99f0eebff6571a958fcc827c6a367}{state\+\_\+machine.\+user\+\_\+action} ()
+\begin{DoxyCompactList}\small\item\em User Action function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{state__machine_8py_a0a97a0736d651ef180460288b1f49d5d}\label{state__machine_8py_a0a97a0736d651ef180460288b1f49d5d}} 
+def \hyperlink{state__machine_8py_a0a97a0736d651ef180460288b1f49d5d}{state\+\_\+machine.\+move\+\_\+dog} (target)
+\begin{DoxyCompactList}\small\item\em client of actionlib server for moving the dog robot \end{DoxyCompactList}\item 
+def \hyperlink{state__machine_8py_a1db226061483cf9f83c8a5e4003ab0c7}{state\+\_\+machine.\+Normal\+\_\+clbk} (ros\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Callback for \hyperlink{classstate__machine_1_1Normal}{Normal} State for subscribe to a Camera1 \+: it checks if the ball is on the arena, if it is, a parameter (Detected\+Ball) becomes 1 and the robot goes to play, otherwise the parameter becomes 0 and the robot moves randomly. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{state__machine_8py_a5c680ce705e6052fa07c6cece21743d0}\label{state__machine_8py_a5c680ce705e6052fa07c6cece21743d0}} 
+def \hyperlink{state__machine_8py_a5c680ce705e6052fa07c6cece21743d0}{state\+\_\+machine.\+main} ()
+\begin{DoxyCompactList}\small\item\em Main Function definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{state__machine_8py_a8b1913f94c64745cffa6fd2062e38f74}\label{state__machine_8py_a8b1913f94c64745cffa6fd2062e38f74}} 
+bool {\bfseries state\+\_\+machine.\+V\+E\+R\+B\+O\+SE} = False
+\item 
+\mbox{\Hypertarget{state__machine_8py_a54f86ff7d2cdd140c50ebb96450702e7}\label{state__machine_8py_a54f86ff7d2cdd140c50ebb96450702e7}} 
+{\bfseries state\+\_\+machine.\+vel} = Twist()
+\item 
+\mbox{\Hypertarget{state__machine_8py_a16809bbff85c893ec571a4a74e7e7527}\label{state__machine_8py_a16809bbff85c893ec571a4a74e7e7527}} 
+{\bfseries state\+\_\+machine.\+angle\+\_\+camera} = Float64()
+\item 
+\hyperlink{state__machine_8py_af9be804204216b5a8fbe5121cf1ab55c}{state\+\_\+machine.\+image\+\_\+pub}
+\begin{DoxyCompactList}\small\item\em Publisher. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{state__machine_8py_a552cb14a092a4c44a3092b286def2ec4}\label{state__machine_8py_a552cb14a092a4c44a3092b286def2ec4}} 
+{\bfseries state\+\_\+machine.\+vel\+\_\+pub} = rospy.\+Publisher(\char`\"{}/robot/cmd\+\_\+vel\char`\"{}, Twist, queue\+\_\+size=1)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This node implements a state machine which permits to move around and to search for a ball, go to sleep, and play with the ball when the last one is found. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{state__machine_8py_file_a1db226061483cf9f83c8a5e4003ab0c7}\label{state__machine_8py_file_a1db226061483cf9f83c8a5e4003ab0c7}} 
+\index{state\+\_\+machine.\+py@{state\+\_\+machine.\+py}!Normal\+\_\+clbk@{Normal\+\_\+clbk}}
+\index{Normal\+\_\+clbk@{Normal\+\_\+clbk}!state\+\_\+machine.\+py@{state\+\_\+machine.\+py}}
+\subsubsection{\texorpdfstring{Normal\+\_\+clbk()}{Normal\_clbk()}}
+{\footnotesize\ttfamily def state\+\_\+machine.\+Normal\+\_\+clbk (\begin{DoxyParamCaption}\item[{}]{ros\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Callback for Normal State for subscribe to a Camera1 \+: it checks if the ball is on the arena, if it is, a parameter (Detected\+Ball) becomes 1 and the robot goes to play, otherwise the parameter becomes 0 and the robot moves randomly. 
+
+
+
+Definition at line 97 of file state\+\_\+machine.\+py.
+
+
+\begin{DoxyCode}
+97 \textcolor{keyword}{def }Normal\_clbk(ros\_data): 
+98     
+99     \textcolor{keyword}{global} count2
+100     \textcolor{keyword}{global} DetectedBall
+101     \textcolor{keyword}{global} SearchBallSub
+102 
+103     \textcolor{keywordflow}{while} rospy.get\_param(\textcolor{stringliteral}{'count2'}) == 360: 
+104         time.sleep(1) 
+105 
+106     
+107     
+108     np\_arr = np.fromstring(ros\_data.data, np.uint8)
+109     image\_np = cv2.imdecode(np\_arr, cv2.IMREAD\_COLOR)  \textcolor{comment}{# OpenCV >= 3.0:}
+110     
+111     greenLower = (50, 50, 20)
+112     greenUpper = (70, 255, 255)
+113     
+114     blurred = cv2.GaussianBlur(image\_np, (11, 11), 0)
+115     hsv = cv2.cvtColor(blurred, cv2.COLOR\_BGR2HSV)
+116     mask = cv2.inRange(hsv, greenLower, greenUpper)
+117     mask = cv2.erode(mask, \textcolor{keywordtype}{None}, iterations=2)
+118     mask = cv2.dilate(mask, \textcolor{keywordtype}{None}, iterations=2)
+119 
+120     
+121     cnts = cv2.findContours(mask.copy(), cv2.RETR\_EXTERNAL,
+122                             cv2.CHAIN\_APPROX\_SIMPLE)
+123     cnts = imutils.grab\_contours(cnts)
+124     center = \textcolor{keywordtype}{None}
+125 
+126 
+127 
+128     
+129 
+130     \textcolor{keywordflow}{if} len(cnts) > 0:
+131         c = max(cnts, key=cv2.contourArea)
+132         ((x, y), radius) = cv2.minEnclosingCircle(c)
+133         M = cv2.moments(c)
+134         center = (int(M[\textcolor{stringliteral}{"m10"}] / M[\textcolor{stringliteral}{"m00"}]), int(M[\textcolor{stringliteral}{"m01"}] / M[\textcolor{stringliteral}{"m00"}]))
+135 
+136         
+137         \textcolor{keywordflow}{if} radius > 10:
+138             
+139 
+140             cv2.circle(image\_np, (int(x), int(y)), int(radius),
+141                         (0, 255, 255), 2)
+142             cv2.circle(image\_np, center, 5, (0, 0, 255), -1)
+143 
+144             
+145             rospy.set\_param(\textcolor{stringliteral}{'DetectedBall'},1)  
+146 
+147     
+148     \textcolor{keywordflow}{else}:
+149 
+150         vel\_ = Twist()
+151         
+152         vel\_.angular.z = 0.5 
+153         vel\_pub.publish(vel\_) 
+154         count2 = rospy.get\_param(\textcolor{stringliteral}{'count2'})
+155         count2 = count2 + 1 
+156         rospy.set\_param(\textcolor{stringliteral}{'count2'}, count2) 
+157           
+158 
+159     
+160     cv2.imshow(\textcolor{stringliteral}{'window'}, image\_np)
+161     cv2.waitKey(2)
+162          
+163 
+164 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{state__machine_8py_file_af9be804204216b5a8fbe5121cf1ab55c}\label{state__machine_8py_file_af9be804204216b5a8fbe5121cf1ab55c}} 
+\index{state\+\_\+machine.\+py@{state\+\_\+machine.\+py}!image\+\_\+pub@{image\+\_\+pub}}
+\index{image\+\_\+pub@{image\+\_\+pub}!state\+\_\+machine.\+py@{state\+\_\+machine.\+py}}
+\subsubsection{\texorpdfstring{image\+\_\+pub}{image\_pub}}
+{\footnotesize\ttfamily state\+\_\+machine.\+image\+\_\+pub}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  rospy.Publisher(\textcolor{stringliteral}{"/output/image\_raw/compressed"},
+2                                          CompressedImage, queue\_size=1)
+\end{DoxyCode}
+
+
+Publisher. 
+
+
+
+Definition at line 90 of file state\+\_\+machine.\+py.
+

@@ -1,0 +1,96 @@
+\hypertarget{go__to__point__robot_8py}{}\section{/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/go\+\_\+to\+\_\+point\+\_\+robot.py File Reference}
+\label{go__to__point__robot_8py}\index{/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/go\+\_\+to\+\_\+point\+\_\+robot.\+py@{/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/go\+\_\+to\+\_\+point\+\_\+robot.\+py}}
+
+
+This node is actionlib server that permits to move the robot.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a03165218d1637827cb202d3df2d5c782}\label{go__to__point__robot_8py_a03165218d1637827cb202d3df2d5c782}} 
+def \hyperlink{go__to__point__robot_8py_a03165218d1637827cb202d3df2d5c782}{go\+\_\+to\+\_\+point\+\_\+robot.\+clbk\+\_\+odom} (msg)
+\begin{DoxyCompactList}\small\item\em Callback function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a7dc82840479105130238b2bad7f4e927}\label{go__to__point__robot_8py_a7dc82840479105130238b2bad7f4e927}} 
+def {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+change\+\_\+state} (state)
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_ae86d8ad9123b9ac0987b894814891c0e}\label{go__to__point__robot_8py_ae86d8ad9123b9ac0987b894814891c0e}} 
+def \hyperlink{go__to__point__robot_8py_ae86d8ad9123b9ac0987b894814891c0e}{go\+\_\+to\+\_\+point\+\_\+robot.\+normalize\+\_\+angle} (angle)
+\begin{DoxyCompactList}\small\item\em function to compute the norm \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a3a0408db6b4459c8ac5f2c39b9751b1f}\label{go__to__point__robot_8py_a3a0408db6b4459c8ac5f2c39b9751b1f}} 
+def {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+fix\+\_\+yaw} (des\+\_\+pos)
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a573823369dd4b9399d01a500104204e1}\label{go__to__point__robot_8py_a573823369dd4b9399d01a500104204e1}} 
+def \hyperlink{go__to__point__robot_8py_a573823369dd4b9399d01a500104204e1}{go\+\_\+to\+\_\+point\+\_\+robot.\+go\+\_\+straight\+\_\+ahead} (des\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em function to go straight \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a1895554db4ca4e026a4e08012839beaf}\label{go__to__point__robot_8py_a1895554db4ca4e026a4e08012839beaf}} 
+def \hyperlink{go__to__point__robot_8py_a1895554db4ca4e026a4e08012839beaf}{go\+\_\+to\+\_\+point\+\_\+robot.\+done} ()
+\begin{DoxyCompactList}\small\item\em function to stop the robot when the goal is achieved \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a06b798e382fdc93770464cbf5958726b}\label{go__to__point__robot_8py_a06b798e382fdc93770464cbf5958726b}} 
+def \hyperlink{go__to__point__robot_8py_a06b798e382fdc93770464cbf5958726b}{go\+\_\+to\+\_\+point\+\_\+robot.\+planning} (goal)
+\begin{DoxyCompactList}\small\item\em define planning funcion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a013e23353b468ecf925a25f3ec0ad0c3}\label{go__to__point__robot_8py_a013e23353b468ecf925a25f3ec0ad0c3}} 
+def \hyperlink{go__to__point__robot_8py_a013e23353b468ecf925a25f3ec0ad0c3}{go\+\_\+to\+\_\+point\+\_\+robot.\+main} ()
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_acbca47166b9d5f046eaeadf1287f52c4}\label{go__to__point__robot_8py_acbca47166b9d5f046eaeadf1287f52c4}} 
+\hyperlink{go__to__point__robot_8py_acbca47166b9d5f046eaeadf1287f52c4}{go\+\_\+to\+\_\+point\+\_\+robot.\+position\+\_\+} = Point()
+\begin{DoxyCompactList}\small\item\em robot state variables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a9ac7f45f0d64cf9ef7666d1f825ef9ba}\label{go__to__point__robot_8py_a9ac7f45f0d64cf9ef7666d1f825ef9ba}} 
+{\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+pose\+\_\+} = Pose()
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_af0544cdffc791a807b9062c979cf0c3d}\label{go__to__point__robot_8py_af0544cdffc791a807b9062c979cf0c3d}} 
+int {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+yaw\+\_\+} = 0
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a68762504c0683adedb89a8f7d431f475}\label{go__to__point__robot_8py_a68762504c0683adedb89a8f7d431f475}} 
+int \hyperlink{go__to__point__robot_8py_a68762504c0683adedb89a8f7d431f475}{go\+\_\+to\+\_\+point\+\_\+robot.\+state\+\_\+} = 0
+\begin{DoxyCompactList}\small\item\em machine state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_ab42eca5c5072ff7b4d95c8e13827dba7}\label{go__to__point__robot_8py_ab42eca5c5072ff7b4d95c8e13827dba7}} 
+\hyperlink{go__to__point__robot_8py_ab42eca5c5072ff7b4d95c8e13827dba7}{go\+\_\+to\+\_\+point\+\_\+robot.\+desired\+\_\+position\+\_\+} = Point()
+\begin{DoxyCompactList}\small\item\em goal \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_ad3b22a785c833ad2cdd10712a66f11c8}\label{go__to__point__robot_8py_ad3b22a785c833ad2cdd10712a66f11c8}} 
+{\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+z}
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_ad0131301589fb7d3d9462cff81932fcf}\label{go__to__point__robot_8py_ad0131301589fb7d3d9462cff81932fcf}} 
+int \hyperlink{go__to__point__robot_8py_ad0131301589fb7d3d9462cff81932fcf}{go\+\_\+to\+\_\+point\+\_\+robot.\+yaw\+\_\+precision\+\_\+} = math.\+pi / 9
+\begin{DoxyCompactList}\small\item\em parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_aadcca20dfdd8e843623186e6efde0481}\label{go__to__point__robot_8py_aadcca20dfdd8e843623186e6efde0481}} 
+int {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+yaw\+\_\+precision\+\_\+2\+\_\+} = math.\+pi / 90
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_adce474cb3bcc2782904a1e6129217a4c}\label{go__to__point__robot_8py_adce474cb3bcc2782904a1e6129217a4c}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+dist\+\_\+precision\+\_\+} = 0.\+1
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_ab9bae8b08a7c50f11e55e3fae44f7777}\label{go__to__point__robot_8py_ab9bae8b08a7c50f11e55e3fae44f7777}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+kp\+\_\+a} = -\/3.\+0
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_afaac446f10588cd97bfda3bf31c3b670}\label{go__to__point__robot_8py_afaac446f10588cd97bfda3bf31c3b670}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+kp\+\_\+d} = 0.\+2
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a82aa92171409b5a766ecc7ec77f1488f}\label{go__to__point__robot_8py_a82aa92171409b5a766ecc7ec77f1488f}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+ub\+\_\+a} = 0.\+6
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a0a5daf54d4f98b8898f69fc331bcc1f0}\label{go__to__point__robot_8py_a0a5daf54d4f98b8898f69fc331bcc1f0}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+lb\+\_\+a} = -\/0.\+5
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_aa54f25328ab1ea2787c879431057298f}\label{go__to__point__robot_8py_aa54f25328ab1ea2787c879431057298f}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+ub\+\_\+d} = 0.\+6
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_aa3df6e395e3d2ee11f4f87c88bde46bb}\label{go__to__point__robot_8py_aa3df6e395e3d2ee11f4f87c88bde46bb}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+z\+\_\+back} = 0.\+25
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_a6e68302a4efb615222a73c01f4ea514e}\label{go__to__point__robot_8py_a6e68302a4efb615222a73c01f4ea514e}} 
+\hyperlink{go__to__point__robot_8py_a6e68302a4efb615222a73c01f4ea514e}{go\+\_\+to\+\_\+point\+\_\+robot.\+pub} = None
+\begin{DoxyCompactList}\small\item\em publisher \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_ab0db118eb85d7bb034dfb80210d478be}\label{go__to__point__robot_8py_ab0db118eb85d7bb034dfb80210d478be}} 
+{\bfseries go\+\_\+to\+\_\+point\+\_\+robot.\+pubz} = None
+\item 
+\mbox{\Hypertarget{go__to__point__robot_8py_ab19ed2eba072e150275e059ca41a4cfc}\label{go__to__point__robot_8py_ab19ed2eba072e150275e059ca41a4cfc}} 
+\hyperlink{go__to__point__robot_8py_ab19ed2eba072e150275e059ca41a4cfc}{go\+\_\+to\+\_\+point\+\_\+robot.\+act\+\_\+s} = None
+\begin{DoxyCompactList}\small\item\em action\+\_\+server \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This node is actionlib server that permits to move the robot. 
+

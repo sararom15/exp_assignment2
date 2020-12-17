@@ -11,10 +11,6 @@ Istance called in play state to track the ball.
 def \hyperlink{classstate__machine_1_1image__feature_a719ee46dbe292cfe76d9b20b3d752b9e}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
 \begin{DoxyCompactList}\small\item\em initialization \end{DoxyCompactList}\item 
 def \hyperlink{classstate__machine_1_1image__feature_a18e75f60a2a7f566add766b5f892c6f5}{callback} (self, ros\+\_\+data)
-\begin{DoxyCompactList}\small\item\em callback to subscribe to camera1 when the state is \hyperlink{classstate__machine_1_1Play}{Play}\+: when the ball is found, a parameter (camera\+\_\+rotate) becomes 1 and the robot starts to rotate the head, otherwise, a parameter becomes 0 and the robot search around for a bit time. \end{DoxyCompactList}\item 
-def \hyperlink{classstate__machine_1_1image__feature_a719ee46dbe292cfe76d9b20b3d752b9e}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
-\begin{DoxyCompactList}\small\item\em initialization \end{DoxyCompactList}\item 
-def \hyperlink{classstate__machine_1_1image__feature_a18e75f60a2a7f566add766b5f892c6f5}{callback} (self, ros\+\_\+data)
 \begin{DoxyCompactList}\small\item\em callback to subscribe to camera1 when the state is \hyperlink{classstate__machine_1_1Play}{Play}\+: when the ball is found, a parameter (camera\+\_\+rotate) becomes 1 and the robot starts to rotate the head, otherwise, a parameter becomes 0 and the robot search around for a bit time. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -41,40 +37,7 @@ Definition at line 166 of file state\+\_\+machine.\+py.
 \mbox{\Hypertarget{classstate__machine_1_1image__feature_a719ee46dbe292cfe76d9b20b3d752b9e}\label{classstate__machine_1_1image__feature_a719ee46dbe292cfe76d9b20b3d752b9e}} 
 \index{state\+\_\+machine\+::image\+\_\+feature@{state\+\_\+machine\+::image\+\_\+feature}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!state\+\_\+machine\+::image\+\_\+feature@{state\+\_\+machine\+::image\+\_\+feature}}
-\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily def state\+\_\+machine.\+image\+\_\+feature.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
-
-
-
-initialization 
-
-\begin{DoxyVerb}Initialize ros publisher, ros subscriber\end{DoxyVerb}
- 
-
-Definition at line 168 of file state\+\_\+machine.\+py.
-
-
-\begin{DoxyCode}
-168     \textcolor{keyword}{def }\hyperlink{classstate__machine_1_1Play_a5993a23d8be7f7b2647f71ede0334957}{\_\_init\_\_}(self):
-169         \textcolor{stringliteral}{'''Initialize ros publisher, ros subscriber'''}
-170 
-171         
-172         self.image\_pub = rospy.Publisher(\textcolor{stringliteral}{"/output/image\_raw/compressed"},
-173                                          CompressedImage, queue\_size=1)
-174 
-175         self.vel\_pub = rospy.Publisher(\textcolor{stringliteral}{"/robot/cmd\_vel"},
-176                                        Twist, queue\_size=1)
-177  
-178 
-179         
-180         self.subscriber = rospy.Subscriber(\textcolor{stringliteral}{"/robot/camera1/image\_raw/compressed"},
-181                                            CompressedImage, self.callback,  queue\_size=1)
-182 
-\end{DoxyCode}
-\mbox{\Hypertarget{classstate__machine_1_1image__feature_a719ee46dbe292cfe76d9b20b3d752b9e}\label{classstate__machine_1_1image__feature_a719ee46dbe292cfe76d9b20b3d752b9e}} 
-\index{state\+\_\+machine\+::image\+\_\+feature@{state\+\_\+machine\+::image\+\_\+feature}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
-\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!state\+\_\+machine\+::image\+\_\+feature@{state\+\_\+machine\+::image\+\_\+feature}}
-\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
 {\footnotesize\ttfamily def state\+\_\+machine.\+image\+\_\+feature.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
 
@@ -110,121 +73,7 @@ Definition at line 168 of file state\+\_\+machine.\+py.
 \mbox{\Hypertarget{classstate__machine_1_1image__feature_a18e75f60a2a7f566add766b5f892c6f5}\label{classstate__machine_1_1image__feature_a18e75f60a2a7f566add766b5f892c6f5}} 
 \index{state\+\_\+machine\+::image\+\_\+feature@{state\+\_\+machine\+::image\+\_\+feature}!callback@{callback}}
 \index{callback@{callback}!state\+\_\+machine\+::image\+\_\+feature@{state\+\_\+machine\+::image\+\_\+feature}}
-\subsubsection{\texorpdfstring{callback()}{callback()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily def state\+\_\+machine.\+image\+\_\+feature.\+callback (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{ros\+\_\+data }\end{DoxyParamCaption})}
-
-
-
-callback to subscribe to camera1 when the state is \hyperlink{classstate__machine_1_1Play}{Play}\+: when the ball is found, a parameter (camera\+\_\+rotate) becomes 1 and the robot starts to rotate the head, otherwise, a parameter becomes 0 and the robot search around for a bit time. 
-
-
-
-Definition at line 184 of file state\+\_\+machine.\+py.
-
-
-\begin{DoxyCode}
-184     \textcolor{keyword}{def }callback(self, ros\_data): 
-185         \textcolor{keyword}{global} count 
-186         \textcolor{keyword}{global} camera\_rotate
-187         count = rospy.get\_param(\textcolor{stringliteral}{'count'}) 
-188 
-189         \textcolor{keywordflow}{while} count == 360: 
-190             time.sleep(1)
-191 
-192 
-193         
-194 
-195         \textcolor{keywordflow}{if} VERBOSE:
-196             \textcolor{keywordflow}{print} (\textcolor{stringliteral}{'received image of type: "%s"'} % ros\_data.format)
-197 
-198         
-199         np\_arr = np.fromstring(ros\_data.data, np.uint8)
-200         image\_np = cv2.imdecode(np\_arr, cv2.IMREAD\_COLOR)  
-201         
-202         greenLower = (50, 50, 20)
-203         greenUpper = (70, 255, 255)
-204         
-205         blurred = cv2.GaussianBlur(image\_np, (11, 11), 0)
-206         hsv = cv2.cvtColor(blurred, cv2.COLOR\_BGR2HSV)
-207         mask = cv2.inRange(hsv, greenLower, greenUpper)
-208         mask = cv2.erode(mask, \textcolor{keywordtype}{None}, iterations=2)
-209         mask = cv2.dilate(mask, \textcolor{keywordtype}{None}, iterations=2)
-210         
-211         cnts = cv2.findContours(mask.copy(), cv2.RETR\_EXTERNAL,
-212                                 cv2.CHAIN\_APPROX\_SIMPLE)
-213         cnts = imutils.grab\_contours(cnts)
-214         center = \textcolor{keywordtype}{None}
-215         
-216         \textcolor{keywordflow}{if} len(cnts) > 0:
-217             
-218             \textcolor{comment}{# find the largest contour in the mask, then use}
-219             \textcolor{comment}{# it to compute the minimum enclosing circle and}
-220             \textcolor{comment}{# centroid}
-221 
-222 
-223             
-224 
-225             c = max(cnts, key=cv2.contourArea)
-226             ((x, y), radius) = cv2.minEnclosingCircle(c)
-227             M = cv2.moments(c)
-228             center = (int(M[\textcolor{stringliteral}{"m10"}] / M[\textcolor{stringliteral}{"m00"}]), int(M[\textcolor{stringliteral}{"m01"}] / M[\textcolor{stringliteral}{"m00"}]))
-229 
-230             \textcolor{comment}{# only proceed if the radius meets a minimum size}
-231             \textcolor{keywordflow}{if} radius > 10:
-232                 
-233                 \textcolor{comment}{# draw the circle and centroid on the frame,}
-234                 \textcolor{comment}{# then update the list of tracked points}
-235                 cv2.circle(image\_np, (int(x), int(y)), int(radius),
-236                            (0, 255, 255), 2)
-237                 cv2.circle(image\_np, center, 5, (0, 0, 255), -1)
-238                 vel = Twist()
-239                 
-240                 vel.angular.z = 0.002*(center[0]-400)
-241                 vel.linear.x = -0.01*(radius-100) 
-242                 
-243                 self.vel\_pub.publish(vel)
-244                 
-245                 \textcolor{keywordflow}{if} (vel.linear.x < 0.01) & (vel.angular.z < 0.01): 
-246                     vel.angular.z = 0
-247                     vel.linear.x = 0
-248                 
-249                     self.vel\_pub.publish(vel)
-250                     rospy.set\_param(\textcolor{stringliteral}{'camera\_rotate'}, 1)
-251                     
-252 
-253         
-254         \textcolor{keywordflow}{else}:
-255 
-256             vel = Twist()
-257             vel.angular.z = 0.5 
-258             self.vel\_pub.publish(vel) 
-259             count = count + 1 
-260         
-261             rospy.set\_param(\textcolor{stringliteral}{'count'}, count) 
-262 
-263             
-264             \textcolor{keywordflow}{if} rospy.get\_param(\textcolor{stringliteral}{'count'}) == 259: 
-265                 
-266                 vel.angular.z = 0.0 
-267                 self.vel\_pub.publish(vel) 
-268                 self.subscriber.unregister() 
-269 
-270 
-271 
-272 
-273 
-274         
-275         cv2.imshow(\textcolor{stringliteral}{'window'}, image\_np)
-276         cv2.waitKey(2)                
-277 
-278 
-279 
-280 
-\end{DoxyCode}
-\mbox{\Hypertarget{classstate__machine_1_1image__feature_a18e75f60a2a7f566add766b5f892c6f5}\label{classstate__machine_1_1image__feature_a18e75f60a2a7f566add766b5f892c6f5}} 
-\index{state\+\_\+machine\+::image\+\_\+feature@{state\+\_\+machine\+::image\+\_\+feature}!callback@{callback}}
-\index{callback@{callback}!state\+\_\+machine\+::image\+\_\+feature@{state\+\_\+machine\+::image\+\_\+feature}}
-\subsubsection{\texorpdfstring{callback()}{callback()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\subsubsection{\texorpdfstring{callback()}{callback()}}
 {\footnotesize\ttfamily def state\+\_\+machine.\+image\+\_\+feature.\+callback (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{ros\+\_\+data }\end{DoxyParamCaption})}
 
 
@@ -339,4 +188,4 @@ Definition at line 184 of file state\+\_\+machine.\+py.
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-scripts/state\+\_\+machine.\+py\end{DoxyCompactItemize}
+/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/\hyperlink{state__machine_8py}{state\+\_\+machine.\+py}\end{DoxyCompactItemize}

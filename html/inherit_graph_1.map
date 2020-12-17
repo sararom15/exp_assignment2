@@ -1,27 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$classass1_1_1srv_1_1__pos__service_1_1pos__serviceRequest.html" title="ass1.srv._pos_service.pos\l_serviceRequest" alt="" coords="171,5,349,47"/>
-<area shape="rect" id="node3" href="$classass1_1_1srv_1_1__pos__service_1_1pos__serviceResponse.html" title="ass1.srv._pos_service.pos\l_serviceResponse" alt="" coords="171,71,349,112"/>
-<area shape="rect" id="node4" href="$classexp__assignment2_1_1msg_1_1__PlanningAction_1_1PlanningAction.html" title="exp_assignment2.msg.\l_PlanningAction.PlanningAction" alt="" coords="157,136,363,177"/>
-<area shape="rect" id="node5" href="$classexp__assignment2_1_1msg_1_1__PlanningActionFeedback_1_1PlanningActionFeedback.html" title="exp_assignment2.msg.\l_PlanningActionFeedback.Planning\lActionFeedback" alt="" coords="147,202,373,258"/>
-<area shape="rect" id="node6" href="$classexp__assignment2_1_1msg_1_1__PlanningActionGoal_1_1PlanningActionGoal.html" title="exp_assignment2.msg.\l_PlanningActionGoal.Planning\lActionGoal" alt="" coords="161,282,359,338"/>
-<area shape="rect" id="node7" href="$classexp__assignment2_1_1msg_1_1__PlanningActionResult_1_1PlanningActionResult.html" title="exp_assignment2.msg.\l_PlanningActionResult.Planning\lActionResult" alt="" coords="156,362,364,418"/>
-<area shape="rect" id="node8" href="$classexp__assignment2_1_1msg_1_1__PlanningFeedback_1_1PlanningFeedback.html" title="exp_assignment2.msg.\l_PlanningFeedback.PlanningFeedback" alt="" coords="137,443,383,484"/>
-<area shape="rect" id="node9" href="$classexp__assignment2_1_1msg_1_1__PlanningGoal_1_1PlanningGoal.html" title="exp_assignment2.msg.\l_PlanningGoal.PlanningGoal" alt="" coords="167,508,353,549"/>
-<area shape="rect" id="node10" href="$classexp__assignment2_1_1msg_1_1__PlanningResult_1_1PlanningResult.html" title="exp_assignment2.msg.\l_PlanningResult.PlanningResult" alt="" coords="155,573,365,615"/>
-<area shape="rect" id="node11" href="$classlearning__actionlib_1_1msg_1_1__FibonacciAction_1_1FibonacciAction.html" title="learning_actionlib.msg.\l_FibonacciAction.FibonacciAction" alt="" coords="151,639,369,680"/>
-<area shape="rect" id="node12" href="$classlearning__actionlib_1_1msg_1_1__FibonacciActionFeedback_1_1FibonacciActionFeedback.html" title="learning_actionlib.msg.\l_FibonacciActionFeedback.Fibonacci\lActionFeedback" alt="" coords="141,705,379,761"/>
-<area shape="rect" id="node13" href="$classlearning__actionlib_1_1msg_1_1__FibonacciActionGoal_1_1FibonacciActionGoal.html" title="learning_actionlib.msg.\l_FibonacciActionGoal.Fibonacci\lActionGoal" alt="" coords="155,785,365,841"/>
-<area shape="rect" id="node14" href="$classlearning__actionlib_1_1msg_1_1__FibonacciActionResult_1_1FibonacciActionResult.html" title="learning_actionlib.msg.\l_FibonacciActionResult.Fibonacci\lActionResult" alt="" coords="150,865,370,921"/>
-<area shape="rect" id="node15" href="$classlearning__actionlib_1_1msg_1_1__FibonacciFeedback_1_1FibonacciFeedback.html" title="learning_actionlib.msg.\l_FibonacciFeedback.Fibonacci\lFeedback" alt="" coords="159,945,361,1001"/>
-<area shape="rect" id="node16" href="$classlearning__actionlib_1_1msg_1_1__FibonacciGoal_1_1FibonacciGoal.html" title="learning_actionlib.msg.\l_FibonacciGoal.FibonacciGoal" alt="" coords="161,1025,359,1067"/>
-<area shape="rect" id="node17" href="$classlearning__actionlib_1_1msg_1_1__FibonacciResult_1_1FibonacciResult.html" title="learning_actionlib.msg.\l_FibonacciResult.FibonacciResult" alt="" coords="149,1091,371,1132"/>
-<area shape="rect" id="node18" href="$classmotion__plan_1_1msg_1_1__PlanningAction_1_1PlanningAction.html" title="motion_plan.msg._Planning\lAction.PlanningAction" alt="" coords="169,1156,351,1197"/>
-<area shape="rect" id="node19" href="$classmotion__plan_1_1msg_1_1__PlanningActionFeedback_1_1PlanningActionFeedback.html" title="motion_plan.msg._Planning\lActionFeedback.PlanningActionFeedback" alt="" coords="128,1221,392,1263"/>
-<area shape="rect" id="node20" href="$classmotion__plan_1_1msg_1_1__PlanningActionGoal_1_1PlanningActionGoal.html" title="motion_plan.msg._Planning\lActionGoal.PlanningActionGoal" alt="" coords="158,1287,362,1328"/>
-<area shape="rect" id="node21" href="$classmotion__plan_1_1msg_1_1__PlanningActionResult_1_1PlanningActionResult.html" title="motion_plan.msg._Planning\lActionResult.PlanningActionResult" alt="" coords="147,1352,373,1393"/>
-<area shape="rect" id="node22" href="$classmotion__plan_1_1msg_1_1__PlanningFeedback_1_1PlanningFeedback.html" title="motion_plan.msg._Planning\lFeedback.PlanningFeedback" alt="" coords="165,1417,355,1459"/>
-<area shape="rect" id="node23" href="$classmotion__plan_1_1msg_1_1__PlanningGoal_1_1PlanningGoal.html" title="motion_plan.msg._Planning\lGoal.PlanningGoal" alt="" coords="169,1483,351,1524"/>
-<area shape="rect" id="node24" href="$classmotion__plan_1_1msg_1_1__PlanningResult_1_1PlanningResult.html" title="motion_plan.msg._Planning\lResult.PlanningResult" alt="" coords="169,1548,351,1589"/>
-<area shape="rect" id="node25" href="$classpos__server_1_1srv_1_1__pos__service_1_1pos__serviceRequest.html" title="pos_server.srv._pos\l_service.pos_serviceRequest" alt="" coords="163,1613,357,1655"/>
-<area shape="rect" id="node26" href="$classpos__server_1_1srv_1_1__pos__service_1_1pos__serviceResponse.html" title="pos_server.srv._pos\l_service.pos_serviceResponse" alt="" coords="158,1679,362,1720"/>
+<area shape="rect" id="node1" href="$classstate__machine_1_1image__feature.html" title="Istance called in play state to track the ball. " alt="" coords="5,5,152,47"/>
 </map>

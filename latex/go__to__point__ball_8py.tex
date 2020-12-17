@@ -1,0 +1,87 @@
+\hypertarget{go__to__point__ball_8py}{}\section{/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/go\+\_\+to\+\_\+point\+\_\+ball.py File Reference}
+\label{go__to__point__ball_8py}\index{/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/go\+\_\+to\+\_\+point\+\_\+ball.\+py@{/home/sara/catkin\+\_\+ws/src/exp\+\_\+assignment2/scripts/go\+\_\+to\+\_\+point\+\_\+ball.\+py}}
+
+
+This node is actionlib server that permits to move the ball.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a8b53c165c87e66822f50ab5daebc14dc}\label{go__to__point__ball_8py_a8b53c165c87e66822f50ab5daebc14dc}} 
+def \hyperlink{go__to__point__ball_8py_a8b53c165c87e66822f50ab5daebc14dc}{go\+\_\+to\+\_\+point\+\_\+ball.\+clbk\+\_\+odom} (msg)
+\begin{DoxyCompactList}\small\item\em Define callback. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_ac5839fd3601d15749a1e1a28939b2c68}\label{go__to__point__ball_8py_ac5839fd3601d15749a1e1a28939b2c68}} 
+def {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+change\+\_\+state} (state)
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_aecbf76a67251ff6a3a0840bb61e1c581}\label{go__to__point__ball_8py_aecbf76a67251ff6a3a0840bb61e1c581}} 
+def \hyperlink{go__to__point__ball_8py_aecbf76a67251ff6a3a0840bb61e1c581}{go\+\_\+to\+\_\+point\+\_\+ball.\+go\+\_\+straight\+\_\+ahead} (des\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em define function to go straight \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_ab92c8b4240f09ff0b5d960c748ade799}\label{go__to__point__ball_8py_ab92c8b4240f09ff0b5d960c748ade799}} 
+def \hyperlink{go__to__point__ball_8py_ab92c8b4240f09ff0b5d960c748ade799}{go\+\_\+to\+\_\+point\+\_\+ball.\+done} ()
+\begin{DoxyCompactList}\small\item\em define function to stop when the goal is reached \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_ab0e05a6be4adc81f80b5635d9bd692d1}\label{go__to__point__ball_8py_ab0e05a6be4adc81f80b5635d9bd692d1}} 
+def \hyperlink{go__to__point__ball_8py_ab0e05a6be4adc81f80b5635d9bd692d1}{go\+\_\+to\+\_\+point\+\_\+ball.\+planning} (goal)
+\begin{DoxyCompactList}\small\item\em define planning funcion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a4d4c016b6bb12c612710a2d39ade3465}\label{go__to__point__ball_8py_a4d4c016b6bb12c612710a2d39ade3465}} 
+def \hyperlink{go__to__point__ball_8py_a4d4c016b6bb12c612710a2d39ade3465}{go\+\_\+to\+\_\+point\+\_\+ball.\+main} ()
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_aa399e57145dd0af7eefcd5fab4174fe9}\label{go__to__point__ball_8py_aa399e57145dd0af7eefcd5fab4174fe9}} 
+\hyperlink{go__to__point__ball_8py_aa399e57145dd0af7eefcd5fab4174fe9}{go\+\_\+to\+\_\+point\+\_\+ball.\+position\+\_\+} = Point()
+\begin{DoxyCompactList}\small\item\em ball state variables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a03f1d8b257a2ae3d173a18c3fc2f8602}\label{go__to__point__ball_8py_a03f1d8b257a2ae3d173a18c3fc2f8602}} 
+{\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+pose\+\_\+} = Pose()
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a74d8ca28c507d35baf1ea8e8f9595a78}\label{go__to__point__ball_8py_a74d8ca28c507d35baf1ea8e8f9595a78}} 
+int {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+yaw\+\_\+} = 0
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a0028df70b94b4041119cceba5e5aa79d}\label{go__to__point__ball_8py_a0028df70b94b4041119cceba5e5aa79d}} 
+int \hyperlink{go__to__point__ball_8py_a0028df70b94b4041119cceba5e5aa79d}{go\+\_\+to\+\_\+point\+\_\+ball.\+state\+\_\+} = 0
+\begin{DoxyCompactList}\small\item\em machine state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_ac81a8393fb253c9e0b7255f779f16884}\label{go__to__point__ball_8py_ac81a8393fb253c9e0b7255f779f16884}} 
+\hyperlink{go__to__point__ball_8py_ac81a8393fb253c9e0b7255f779f16884}{go\+\_\+to\+\_\+point\+\_\+ball.\+desired\+\_\+position\+\_\+} = Point()
+\begin{DoxyCompactList}\small\item\em goal \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_acc228d72c1ee47a43061e3563ac20d5c}\label{go__to__point__ball_8py_acc228d72c1ee47a43061e3563ac20d5c}} 
+int \hyperlink{go__to__point__ball_8py_acc228d72c1ee47a43061e3563ac20d5c}{go\+\_\+to\+\_\+point\+\_\+ball.\+yaw\+\_\+precision\+\_\+} = math.\+pi / 9
+\begin{DoxyCompactList}\small\item\em parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a1985c69cf8534ba0bd2c6080f788a992}\label{go__to__point__ball_8py_a1985c69cf8534ba0bd2c6080f788a992}} 
+int {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+yaw\+\_\+precision\+\_\+2\+\_\+} = math.\+pi / 90
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a9a02c8ca89a09909111972ec4fd317ca}\label{go__to__point__ball_8py_a9a02c8ca89a09909111972ec4fd317ca}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+dist\+\_\+precision\+\_\+} = 0.\+1
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_aac67ecb6c41141092b1ccaba4b537afc}\label{go__to__point__ball_8py_aac67ecb6c41141092b1ccaba4b537afc}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+kp\+\_\+a} = 3.\+0
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_aeb49969b88b7ca77d9abdeae42cb1964}\label{go__to__point__ball_8py_aeb49969b88b7ca77d9abdeae42cb1964}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+kp\+\_\+d} = 0.\+5
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_aa5173a26f3502ea035d7c563bbf1fb05}\label{go__to__point__ball_8py_aa5173a26f3502ea035d7c563bbf1fb05}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+ub\+\_\+a} = 0.\+6
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_ae6440cb2a8ea6e8e7d2327cb4cd12dd3}\label{go__to__point__ball_8py_ae6440cb2a8ea6e8e7d2327cb4cd12dd3}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+lb\+\_\+a} = -\/0.\+5
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a1dabe6f24f898fa6f5303959917de757}\label{go__to__point__ball_8py_a1dabe6f24f898fa6f5303959917de757}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+ub\+\_\+d} = 2.\+0
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a176944c73499ce72fa754c7e1a6d138d}\label{go__to__point__ball_8py_a176944c73499ce72fa754c7e1a6d138d}} 
+float {\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+z\+\_\+back} = 0.\+25
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a00b95c7141b558cd4466ca89d7c81640}\label{go__to__point__ball_8py_a00b95c7141b558cd4466ca89d7c81640}} 
+\hyperlink{go__to__point__ball_8py_a00b95c7141b558cd4466ca89d7c81640}{go\+\_\+to\+\_\+point\+\_\+ball.\+pub} = None
+\begin{DoxyCompactList}\small\item\em publisher \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_ae3016b9645d9bd2b863a34a30115a6af}\label{go__to__point__ball_8py_ae3016b9645d9bd2b863a34a30115a6af}} 
+{\bfseries go\+\_\+to\+\_\+point\+\_\+ball.\+pubz} = None
+\item 
+\mbox{\Hypertarget{go__to__point__ball_8py_a9ac8c67ea55b320e5eb2bdf665173ffa}\label{go__to__point__ball_8py_a9ac8c67ea55b320e5eb2bdf665173ffa}} 
+\hyperlink{go__to__point__ball_8py_a9ac8c67ea55b320e5eb2bdf665173ffa}{go\+\_\+to\+\_\+point\+\_\+ball.\+act\+\_\+s} = None
+\begin{DoxyCompactList}\small\item\em action\+\_\+server \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This node is actionlib server that permits to move the ball. 
+
